@@ -1,13 +1,15 @@
-import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import { CvrSearch } from "./Components/CvrSearch";
+import { IInputs, IOutputs } from "./generated/ManifestTypes";
+import { ICvrProps } from "./Interfaces/CVRInterface";
 import React = require("react");
 import ReactDOM = require("react-dom");
-import { ICvrProps } from "./Interfaces/CVRInterface";
 
 export class CVRSearch implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
 	private localNotifyOutputChanged: () => void;
 	private _context: ComponentFramework.Context<IInputs>;
 	private _container: HTMLDivElement;
+	private countryCode: string;
 
 	private name: string;
 	private address: string;
@@ -16,8 +18,10 @@ export class CVRSearch implements ComponentFramework.StandardControl<IInputs, IO
 	private startDate: string;
 	private email: string;
 	private phone: string;
+	private cvr: string
+	
 
-	private outPutFunction(name: string, address: string, city: string, zipcode: string, startDate: string, email: string, phone: string) {
+	private outPutFunction(name: string, cvr: string, address: string, city: string, zipcode: string, startDate: string, email: string, phone: string) {
 		this.name = name;
 		this.address = address;
 		this.city = city;
@@ -25,6 +29,7 @@ export class CVRSearch implements ComponentFramework.StandardControl<IInputs, IO
 		this.startDate = startDate;
 		this.email = email;
 		this.phone = phone;
+		this.cvr = cvr;
 		this.localNotifyOutputChanged();
 	}
 	/**
@@ -47,14 +52,23 @@ export class CVRSearch implements ComponentFramework.StandardControl<IInputs, IO
 	{
 		this._container = container;
 		this._context = context;
+		this.countryCode = (context.parameters.CountryCode.raw === null) ? "DK" : context.parameters.CountryCode.raw;
 		this.localNotifyOutputChanged = notifyOutputChanged;
 
 		let props: ICvrProps = {
 			context: this._context,
+			countryCode: this.countryCode,
 			outPutFunction: this.outPutFunction.bind(this)
 		};
-
-		// Add control initialization code
+		
+		ReactDOM.render(
+			React.createElement(
+				CvrSearch,
+				props
+			),
+			this._container
+		);
+		
 	}
 
 
@@ -73,7 +87,14 @@ export class CVRSearch implements ComponentFramework.StandardControl<IInputs, IO
 	 */
 	public getOutputs(): IOutputs
 	{
-		return {};
+		return {
+			Name: this.name,
+			address: this.address,
+			City: this.city,
+			Email: this.email,
+			zipcode: this.zipCode,
+			CVR: this.cvr
+		};
 	}
 
 	/**

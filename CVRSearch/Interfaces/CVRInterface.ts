@@ -1,4 +1,3 @@
-import { IInputProps } from "@fluentui/react";
 import { IInputs } from "../generated/ManifestTypes";
 
 export interface IProductionunit {
@@ -51,5 +50,7 @@ export interface ICVRRootObject {
 
 export interface ICvrProps {
     context: ComponentFramework.Context<IInputs>,
-    outPutFunction?: (name: string, address: string, city: string, zipcode: string, startDate: string, email: string, phone: string) => void;
+    countryCode: string,
+    outPutFunction?: (name: string, cvr: string, address: string, city: string, zipcode: string, startDate: string, email: string, phone: string) => void;
 }
+
