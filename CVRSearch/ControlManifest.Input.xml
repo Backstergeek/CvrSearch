@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="CVRSearch" constructor="CVRSearch" version="0.0.1" display-name-key="CVRSearch" description-key="CVRSearch description" control-type="standard" >
+  <control namespace="CVRSearch" constructor="CVRSearch" version="1.3.0" display-name-key="CVRSearch" description-key="CVRSearch description" control-type="standard" >
 
     <external-service-usage enabled="false">
 
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="BoundField" display-name-key="Bound_Field" description-key="Field that you want to bind the PCF to" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="CountryCode" display-name-key="Country Code" description-key="The field that holds the Country Code default is DK" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="CVR" display-name-key="CVR" description-key="CVR number" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="CountryCode" display-name-key="Country Code" description-key="The field that holds the Country Code default is DK" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="CVR" display-name-key="CVR" description-key="CVR number" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="City" display-name-key="City" description-key="City" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address" display-name-key="address" description-key="Street name combined with number" of-type="SingleLine.Text" usage="bound" required="false" />
     <!-- <property name="streetName" display-name-key="streetName" description-key="Street name" of-type="SingleLine.Text" usage="bound" required="false" />
@@ -20,6 +20,9 @@
     
     <resources>
       <code path="index.ts" order="1"/>
+      <css path="css/styles.css" order="1"/>
+      <resx path="strings/CVRSearch.1033.resx" version="1.0.0" />
+      <resx path="strings/CVRSearch.1030.resx" version="1.0.0" />
     
     </resources>
     <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
