@@ -59,12 +59,6 @@ export const CvrSearch: React.FC<ICvrProps> = (props) => {
                     }}}
                 />
               </StackItem>
-              {/* <StackItem>
-                <PrimaryButton 
-                    text={props.context.resources.getString("ButtonPlaceHolder")} 
-                    onClick={getCvrData}
-                />
-              </StackItem>                   */}
             </Stack>
             {loading ? <Stack><StackItem>{loadingTxt}</StackItem></Stack> :
             <Stack style={{display: (show? 'block': 'none')}}>
