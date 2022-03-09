@@ -70,4 +70,8 @@
 	<value>Søger....</value>
 	<comment>Tekst til søge text</comment>
 </data>
+<data name="NoResult" xml:space="preserve">
+	<value>Søgningen gav ingen resultater.....</value>
+	<comment>Text ved fejl eller ingen resultater</comment>
+</data>
 </root>

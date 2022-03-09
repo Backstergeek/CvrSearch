@@ -1,4 +1,3 @@
-import { PrimaryButton} from '@fluentui/react/lib/Button';
 import { Stack, StackItem } from '@fluentui/react/lib/Stack';
 import { TextField } from '@fluentui/react/lib/TextField';
 import * as React from 'react';
@@ -18,7 +17,7 @@ export const CvrSearch: React.FC<ICvrProps> = (props) => {
     function getCvrData(): void {
 
         setLoading(true);
-        setLoadingTxt("Søger....")
+        setLoadingTxt(props.context.resources.getString("seachText"))
         let searchString: string = input;
         let isName: boolean = false;
 
@@ -41,7 +40,7 @@ export const CvrSearch: React.FC<ICvrProps> = (props) => {
           setShow(true);
           
         }).catch((e) => {
-          setLoadingTxt("Søgningen gav ingen resultater")
+          setLoadingTxt(props.context.resources.getString("NoResult"))
         })
     }
 

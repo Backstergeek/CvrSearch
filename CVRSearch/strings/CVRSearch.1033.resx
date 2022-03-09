@@ -70,4 +70,8 @@
 	<value>Searching.....</value>
 	<comment>Text for searching</comment>
 </data>
+<data name="NoResult" xml:space="preserve">
+	<value>No results found.....</value>
+	<comment>Text for searching</comment>
+</data>
 </root>
